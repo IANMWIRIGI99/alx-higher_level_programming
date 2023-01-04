@@ -1,0 +1,64 @@
+The 0-add_integer module
+======================
+
+Using add_integer
+-------------------
+
+Import add_integer from the 0-add_integer module:
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Tests for module docstring:
+    >>> m_docstr = __import__("0-add_integer").__doc__
+    >>> len(m_docstr) > 1
+    True
+
+Tests for function docstring:
+    >>> f_docstr = __import__("0-add_integer").add_integer.__doc__
+    >>> len(f_docstr) > 1
+    True
+
+Tests addition when both arguments are integers:
+    >>> add_integer(2,3)
+    5
+
+Tests addition when both arguments are floats:
+    >>> add_integer(2.9,3.25)
+    5
+
+Tests addition when one argument is an integer another a float:
+    >>> add_integer(2, 3.25)
+    5
+
+Tests addition when there is one argument(integer type):
+    >>> add_integer(2)
+    100
+
+Tests addition when one argument is an integer another float infinity:
+    >>> add_integer(2, float('inf'))
+    Traceback (most recent call last):
+    ...
+    OverflowError: cannot convert float infinity to integer
+
+Tests addition when one argument(a) is string another(b) integer:
+    >>> add_integer("2", 3)
+    Traceback (most recent call last):
+    ...
+    TypeError: a must be an integer
+
+Tests addition when one argument(b) is string another(a) integer:
+    >>> add_integer(2, "3")
+    Traceback (most recent call last):
+    ...
+    TypeError: b must be an integer
+
+Tests addition when no arguments:
+    >>> add_integer()
+    Traceback (most recent call last):
+    ...
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Tests addition when 3 arguments:
+    >>> add_integer(2, 3, 4)
+    Traceback (most recent call last):
+    ...
+    TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given

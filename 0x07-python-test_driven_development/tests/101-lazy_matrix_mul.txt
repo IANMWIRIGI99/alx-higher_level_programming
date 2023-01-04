@@ -1,0 +1,81 @@
+The 101-lazy_matrix_mul module
+======================
+
+Using lazy_matrix_mul
+-------------------
+
+Import lazy_matrix_mul from the 101-lazy_matrix_mul module:
+    >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+Tests for module docstring:
+    >>> m_docstr = __import__("101-lazy_matrix_mul").__doc__
+    >>> len(m_docstr) > 1
+    True
+
+Tests for function docstring:
+    >>> f_docstr = __import__("101-lazy_matrix_mul").lazy_matrix_mul.__doc__
+    >>> len(f_docstr) > 1
+    True
+
+Tests multiplication when two matrices that have integers are given:
+    >>> print(lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+    [[ 7 10]
+     [15 22]]
+
+Tests mul when non-list is m_a:
+    >>> lazy_matrix_mul(None, [[5, 6], [9, 8]])
+    Traceback (most recent call last):
+    ...
+    TypeError: Object arrays are not currently supported
+
+Tests mul when m_b is non-list:
+    >>> lazy_matrix_mul([[5, 6], [9, 8]], None)
+    Traceback (most recent call last):
+    ...
+    TypeError: Object arrays are not currently supported
+
+Tests mul when m_a is empty:
+    >>> lazy_matrix_mul([], [[5, 6], [9, 8]])
+    Traceback (most recent call last):
+    ...
+    ValueError: shapes (0,) and (2,2) not aligned: 0 (dim 0) != 2 (dim 0)
+
+Tests mul when m_b is empty:
+    >>> lazy_matrix_mul([[5, 6], [9, 8]], [])
+    Traceback (most recent call last):
+    ...
+    ValueError: shapes (2,2) and (0,) not aligned: 2 (dim 1) != 0 (dim 0)
+
+Tests mul when m_b has empty rows:
+    >>> print(lazy_matrix_mul([[5, 6], [9, 8]], [[], []]))
+    []
+
+Tests mul when a string is in list in m_a:
+    >>> lazy_matrix_mul([[22, "jump"], [3.5, 44]], [[11, 29], [23, 4.0]])
+    Traceback (most recent call last):
+    ...
+    TypeError: invalid data type for einsum
+
+Tests mul when a string is in list in m_b:
+    >>> lazy_matrix_mul([[41, 25], [8, 9]], [[22, "street"], [30, 16]])
+    Traceback (most recent call last):
+    ...
+    TypeError: invalid data type for einsum
+
+Tests mul when matrices mismatch:
+    >>> lazy_matrix_mul([[3, 19, 24], [19, 5.5, 6]], [[5, 6], [9, 8]])
+    Traceback (most recent call last):
+    ...
+    ValueError: shapes (2,3) and (2,2) not aligned: 3 (dim 1) != 2 (dim 0)
+
+Test mul when one argument is given:
+    >>> lazy_matrix_mul([[5, 9]])
+    Traceback (most recent call last):
+        ...
+    TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+Tests mul when no arguments are given:
+    >>> lazy_matrix_mul()
+    Traceback (most recent call last):
+        ...
+    TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
