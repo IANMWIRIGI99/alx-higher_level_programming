@@ -1,0 +1,84 @@
+The 7-base_geometry module
+======================
+
+Using BaseGeometry
+-------------------
+
+Import BaseGeometry from 7-base_geometry module
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+    >>> bg = BaseGeometry()
+
+Tests when both arguments that pass the condition are given:
+    >>> bg.integer_validator("quantity", 2)
+
+Tests when second argument(value) is string:
+    >>> bg.integer_validator("name", "John")
+    Traceback (most recent call last):
+    ...
+    TypeError: name must be an integer
+
+Tests when second argument(value) is 0:
+    >>> bg.integer_validator("quantity", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: quantity must be greater than 0
+
+Tests when second argument(value) is less than 0:
+    >>> bg.integer_validator("quantity", -2)
+    Traceback (most recent call last):
+    ...
+    ValueError: quantity must be greater than 0
+
+Tests when no arguments are given:
+    >>> bg.integer_validator()
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+Tests when 1 argument(string) is given:
+    >>> bg.integer_validator("quantity")
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+Tests area Exception:
+    >>> bg.area()
+    Traceback (most recent call last):
+    ...
+    Exception: area() is not implemented
+
+Tests when the second argument(second argument(value)) is None:
+    >>> bg.integer_validator("quantity", None)
+    Traceback (most recent call last):
+    ...
+    TypeError: quantity must be an integer
+
+Tests when the second argument(second argument(value)) is a bool:
+    >>> bg.integer_validator("quantity", True)
+    Traceback (most recent call last):
+    ...
+    TypeError: quantity must be an integer
+
+Tests when the second argument(second argument(value)) is a list:
+    >>> bg.integer_validator("quantity", [1, 2])
+    Traceback (most recent call last):
+    ...
+    TypeError: quantity must be an integer
+
+Tests when the second argument(second argument(value)) is a tuple:
+    >>> bg.integer_validator("quantity", (0,))
+    Traceback (most recent call last):
+    ...
+    TypeError: quantity must be an integer
+
+Tests when the second argument(second argument(value)) is a dict:
+    >>> bg.integer_validator("quantity", {1 : 1, 2 : 4})
+    Traceback (most recent call last):
+    ...
+    TypeError: quantity must be an integer
+
+Tests when the second argument(second argument(value)) is a set:
+    >>> bg.integer_validator("quantity", {1, 2})
+    Traceback (most recent call last):
+    ...
+    TypeError: quantity must be an integer
